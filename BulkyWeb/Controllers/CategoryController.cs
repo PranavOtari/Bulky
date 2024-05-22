@@ -18,6 +18,10 @@ namespace BulkyWeb.Controllers
         }
 
         
+        public IActionResult Create() 
+        {
+            return View();
+        }
              
 
     }
