@@ -14,9 +14,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark text-bg-warning border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BulkyWeb</a>
+                <a class="navbar-brand text-bg-warning" asp-area="" asp-controller="Home" asp-action="Index">BulkyWeb</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,13 +24,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link"  asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-bg-warning" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-bg-warning" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Category" asp-action="Index">Category</a>
+                            <a class="nav-link text-bg-warning" asp-controller="Category" asp-action="Index">Category</a>
                         </li>
                     </ul>
                 </div>
@@ -42,9 +42,8 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer bg-dark text-muted">
-        <div class="text-center bg-light">
+    <footer class="footer">
+        <div class="text-center text-bg-warning">
             Made with <i class="bi bi-heart-fill"></i> By PranavOtari
         </div>
     </footer>

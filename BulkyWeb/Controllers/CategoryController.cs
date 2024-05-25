@@ -31,15 +31,43 @@ namespace BulkyWeb.Controllers
                 ModelState.AddModelError("name","Display order can not be exactly match with Name");
             }
 
-            if (ctg.Name?.ToLower() == "test")
-            {
-                ModelState.AddModelError("","test is not valid value !");
-            }
+           
 
             if (ModelState.IsValid) 
             { 
                _db.Categories.Add(ctg);
                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id==null || id == 0)
+            {
+                return NotFound();
+            }
+            
+           //  Category? categoryFromDb1= _db.Categories.FirstOrDefault(c=>c.Id==id);
+            Category? categoryFromDb = _db.Categories.Find(id); // works on primary key
+            
+            if(categoryFromDb == null) 
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDb);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Category ctg)
+        {
+          
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Update(ctg);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View();
