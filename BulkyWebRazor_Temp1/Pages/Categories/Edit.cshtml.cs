@@ -15,9 +15,6 @@ namespace BulkyWebRazor_Temp1.Pages.Categories
         {
             _db = db;
         }
-
-
-
         public void OnGet(int? id)
         {
             if(id !=null && id != 0)
@@ -32,7 +29,8 @@ namespace BulkyWebRazor_Temp1.Pages.Categories
             {
                 _db.Categories.Update(Category);
                 _db.SaveChanges();
-                //TempData["Success"] = "Category updated successfully !";
+
+                TempData["Success"] = "Category Updated successfully !";
                 return RedirectToPage("Index");
             }
             return Page();

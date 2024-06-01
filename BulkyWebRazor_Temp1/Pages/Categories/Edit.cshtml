@@ -4,6 +4,7 @@
 
 
 <form method="post">
+    <input asp-for="Category.Id" hidden />
     <div class="p-3 mt-5">
         <div class="row pb-2">
             <h2 class="text-primary">Edit Category</h2>
@@ -13,7 +14,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="mb-3 row p-1">
-            <label asp-page="Category.Name" class="p-0"></label>
+            <label asp-for="Category.Name" class="p-0"></label>
             <input asp-for="Category.Name" class="form-control" />
             <span asp-validation-for="Category.Name" class="text-danger"></span>
         </div>

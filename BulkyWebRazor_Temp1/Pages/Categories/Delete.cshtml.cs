@@ -34,6 +34,7 @@ namespace BulkyWebRazor_Temp1.Pages.Categories
 
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["Success"] = "Category Deleted Sucessfully !";
             return RedirectToPage("Index");
 
         }
