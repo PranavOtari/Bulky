@@ -9,8 +9,6 @@ namespace BulkyWebRazor_Temp1.Pages.Categories
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _db;
-
-       
         public Category Category { get; set; }
 
         public CreateModel(ApplicationDbContext db)
