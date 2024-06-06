@@ -3,8 +3,9 @@ using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyWeb.Controllers
+namespace BulkyWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         public readonly IUnitOfWork _unitOfWork;
@@ -18,8 +19,8 @@ namespace BulkyWeb.Controllers
             return View(objCategoryList);
         }
 
-        
-        public IActionResult Create() 
+
+        public IActionResult Create()
         {
             return View();
         }
@@ -27,14 +28,14 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category ctg)
         {
-            if(ctg.Name == ctg.DisplayOrder.ToString()) // custome validation
+            if (ctg.Name == ctg.DisplayOrder.ToString()) // custome validation
             {
-                ModelState.AddModelError("name","Display order can not be exactly match with Name");
+                ModelState.AddModelError("name", "Display order can not be exactly match with Name");
             }
 
-           
 
-            if (ModelState.IsValid) 
+
+            if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Add(ctg);
                 _unitOfWork.Save();
@@ -46,16 +47,16 @@ namespace BulkyWeb.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if (id==null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
 
-            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id); 
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
 
-            if (categoryFromDb == null) 
+            if (categoryFromDb == null)
             {
                 return NotFound();
             }
@@ -66,7 +67,7 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Edit(Category ctg)
         {
-          
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Update(ctg);
@@ -84,7 +85,7 @@ namespace BulkyWeb.Controllers
                 return NotFound();
             }
 
-           
+
             Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (categoryFromDb == null)
@@ -98,9 +99,9 @@ namespace BulkyWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj= _unitOfWork.Category.Get(u => u.Id == id);
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
 
-            if (obj == null) 
+            if (obj == null)
             {
                 return NotFound();
             }
@@ -110,8 +111,8 @@ namespace BulkyWeb.Controllers
             TempData["Success"] = "Category deleted successfully !";
             return RedirectToAction("Index");
 
-             
-            
+
+
         }
 
 
