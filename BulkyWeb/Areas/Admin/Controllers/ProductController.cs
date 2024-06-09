@@ -22,7 +22,7 @@ namespace BulkyWeb.Areas.Admin.Controllers
         }
 
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
             ProductVM productVM = new()
             {
@@ -34,11 +34,23 @@ namespace BulkyWeb.Areas.Admin.Controllers
                 Product = new Product()
             };
 
-            return View(productVM);
+            if(id == null || id == 0)
+            {
+                // create
+                return View(productVM);
+            }
+            else
+            {
+                // update 
+                productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
+                return View(productVM);
+            }
+
+           
         }
 
         [HttpPost]
-        public IActionResult Create(ProductVM productVM)
+        public IActionResult Upsert(ProductVM productVM, IFormFile? file)
         {
 
             if (ModelState.IsValid)
@@ -61,38 +73,38 @@ namespace BulkyWeb.Areas.Admin.Controllers
 
         }
 
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
+        //public IActionResult Edit(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
 
 
-            Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == id);
+        //    Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == id);
 
 
-            if (productFromDb == null)
-            {
-                return NotFound();
-            }
+        //    if (productFromDb == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(productFromDb);
-        }
+        //    return View(productFromDb);
+        //}
 
-        [HttpPost]
-        public IActionResult Edit(Product pdt)
-        {
+        //[HttpPost]
+        //public IActionResult Edit(Product pdt)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Product.Update(pdt);
-                _unitOfWork.Save();
-                TempData["Success"] = "Product updated successfully !";
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        _unitOfWork.Product.Update(pdt);
+        //        _unitOfWork.Save();
+        //        TempData["Success"] = "Product updated successfully !";
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View();
+        //}
 
         public IActionResult Delete(int? id)
         {

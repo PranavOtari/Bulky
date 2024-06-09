@@ -1,9 +1,10 @@
 ﻿@model ProductVM
 
 <form method="post" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden />
     <div class="p-3 mt-5">
         <div class="row pb-2">
-            <h2 class="text-primary">Create Product</h2>
+            <h2 class="text-primary">@(Model.Product.Id != 0 ? "Update" : "Create") Product</h2>
             <hr />
         </div>
 
@@ -63,7 +64,15 @@
 
         <div class="row">
             <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-outline-dark form-control">Create</button> &nbsp;
+                @if (Model.Product.Id != 0)
+                {
+                    <button type="submit" class="btn btn-outline-dark form-control">Update</button>
+
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-outline-dark form-control">Create</button>
+                }
             </div>
             <div class="col-6 col-md-3">
                 <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary border form-control">
