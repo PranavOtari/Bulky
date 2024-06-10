@@ -56,7 +56,7 @@ namespace Bulky.Models
 
         [ValidateNever]
         public string ImageUrl { get; set; }
-
+        
 
     }
 }

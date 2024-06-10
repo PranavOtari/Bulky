@@ -59,17 +59,19 @@ namespace BulkyWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
-                if (file!= null)
+                if (file != null)
                 {
-                    string fileName= Guid.NewGuid().ToString() + Path.GetExtension(file.FileName); // will give randome name to img file and save extension of file
-                    string productPath= Path.Combine(wwwRootPath, @"Images\Product");
-                    using (var fileStream= new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"Images\Product");
+
+
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
-
-                    productVM.Product.ImageUrl = @"\Images\Product" + fileName;
+                    productVM.Product.ImageUrl = @"\Images\Product\" + fileName;
                 }
+
                 _unitOfWork.Product.Add(productVM.Product);
                 _unitOfWork.Save();
                 TempData["Success"] = "New Product created successfully !";
