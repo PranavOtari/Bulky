@@ -85,15 +85,17 @@ namespace BulkyWeb.Areas.Admin.Controllers
                 if (productVM.Product.Id == 0)
                 {
                     _unitOfWork.Product.Add(productVM.Product);
+                    TempData["Success"] = "New Product created successfully !";
                 }
                 else
                 {
                     _unitOfWork.Product.Update(productVM.Product);
+                    TempData["Success"] = "Product Updated Successfully !";
                 }
 
                
                 _unitOfWork.Save();
-                TempData["Success"] = "New Product created successfully !";
+               
                 return RedirectToAction("Index");
             }
             else
