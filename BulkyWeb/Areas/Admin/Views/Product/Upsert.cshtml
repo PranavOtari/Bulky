@@ -1,5 +1,6 @@
 ﻿@model ProductVM
 
+
 <form method="post" enctype="multipart/form-data">
     <input asp-for="Product.Id" hidden />
     <input asp-for="Product.ImageUrl" hidden />
@@ -54,7 +55,7 @@
                 </div>
                 <div class="mb-3 row p-1">
                     <label asp-for="Product.CategoryId" class="p-0"></label>
-                    <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                    <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-control form-select">
                         <option disabled selected>--Select Category--</option>
                     </select>
                     <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
@@ -96,6 +97,7 @@
 
 </form>
 @section Scripts {
+  
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -110,7 +112,8 @@
             ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
         });
     </script>
+  
     @{
-        <partial name="_ValidationScriptsPartial" />
+            <partial name="_ValidationScriptsPartial" />
     }
 }
