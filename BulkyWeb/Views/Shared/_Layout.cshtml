@@ -4,27 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BulkyWeb</title>
-   
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/BulkyWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
-    
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    
-    
+
+
     <style>
         footer {
             bottom: 0;
-            height:max-content;
-            position:absolute;
-            width:1280px;
+            height: max-content;
+            position: absolute;
+            width: 1280px;
         }
 
-        
     </style>
 </head>
 <body>
@@ -37,17 +36,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link bg-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link bg-dark" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               Content Management
+                                Content Management
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
@@ -56,13 +55,14 @@
                                 <li class="nav-item">
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
                                 </li>
-                                
+
                                 @* <li><hr class="dropdown-divider"></li> *@
-                                
+
                             </ul>
                         </li>
-                        
+
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -75,11 +75,11 @@
     </div>
     <footer>
         <div class="text-center text-bg-warning">
-            
-               Made with <i class="bi bi-heart-fill"></i> By PranavOtari &copy 2024
-       </div>
+
+            Made with <i class="bi bi-heart-fill"></i> By PranavOtari &copy 2024
+        </div>
     </footer>
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js" asp-append-version="true"></script>
