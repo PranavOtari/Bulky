@@ -17,6 +17,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<App
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork >();  // service for DI
 
 
+builder.Services.AddRazorPages();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,9 +33,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
